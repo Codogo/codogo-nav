@@ -12,7 +12,7 @@ import {
 	shadow,
 	sm,
 	transparent,
-} from "codogo-mixins";
+} from "codogo-utility-functions";
 
 // --------------------------------------------------
 

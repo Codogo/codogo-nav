@@ -8,7 +8,7 @@ import {
 	transparent,
 	clearfix,
 	bpEither,
-} from "codogo-mixins";
+} from "codogo-utility-functions";
 
 // --------------------------------------------------
 
