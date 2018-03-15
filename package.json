@@ -1,0 +1,29 @@
+{
+  "name": "codogo-nav",
+  "description": "Default navigation bar that hopefully actually works",
+  "version": "0.1.0",
+  "author": "Max Clayton Clowes <maxcc@me.com>",
+  "dependencies": {
+    "react": "16.2.0",
+    "styled-components": "^3.2.3",
+    "codogo-mixins": "^0.1.0"
+  },
+  "devDependencies": {
+    "codogo-scripts": "^3.2.10",
+    "prettier": "^1.11.1"
+  },
+  "eslintConfig": {
+    "extends": "codogo"
+  },
+  "keywords": [
+    "navigation",
+    "bar",
+    "nav",
+    "codogo"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "format": "codogo-scripts format",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
