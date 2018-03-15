@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "author": "Max Clayton Clowes <maxcc@me.com>",
   "dependencies": {
-    "codogo-mixins": "^0.2.0",
+    "codogo-utility-functions": "^1.0.1",
     "eslint": "^4.18.2",
     "react": "16.2.0",
     "react-addons-transition-group": "^15.6.2",
