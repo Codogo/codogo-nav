@@ -1,7 +1,7 @@
 {
   "name": "codogo-nav",
   "description": "Default navigation bar that hopefully actually works",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Max Clayton Clowes <maxcc@me.com>",
   "dependencies": {
     "codogo-utility-functions": "^1.0.1",
