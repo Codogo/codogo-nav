@@ -1,29 +1,75 @@
-# README #
+# codogo-nav
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Example usage
 
-### What is this repository for? ###
+Import component
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+```
+import { Nav, } from 'codogo-nav';
+```
 
-### How do I get set up? ###
+Use like this:
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+```
+    <Nav
+        logo = { <Logo src = "/img/igpf-logo.png" /> }
+        font = "Helvetica"
+        textTransform = { { "xs": "capitalize", "other": "capitalize", } }
+        backgroundColor = { { "xs": vars.colors.gray, "other": vars.colors.gray, } }
+        color = { { "xs": vars.colors.primary, "other": vars.colors.primary, } }
+        shadow
+    >
+        {
+            nav.map(
+                (route, i) => (
+                    <MenuLink
+                        key = { route.title }
+                        to = { route.link || route.path }
+                        activeClassName = "active"
+                        onClick = { props.close }
+                    >
+                        { route.title }
+                    </MenuLink>
+                )
+            )
+        }
+    </Nav>
+```
 
-### Contribution guidelines ###
+## Props
 
-* Writing tests
-* Code review
-* Other guidelines
+The follow props are used, defaults shown below:
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+```
+Nav.defaultProps = {
+    padding: {
+        xs: "15px",
+        other: "20px",
+    },
+    color: {
+        xs: "#fff",
+        other: "#fff",
+    },
+    backgroundColor: {
+        xs: "#333",
+        other: "#333",
+    },
+    height: {
+        xs: "50px",
+        other: "70px",
+    },
+    font: "sans-serif",
+    textTransform: {
+        xs: "uppercase",
+        other: "uppercase",
+    },
+    topOffset: {
+        xs: "50px",
+        other: "70px",
+    },
+    margin: {
+        xs: "20px",
+        other: "30px",
+    },
+};
+```

@@ -17,7 +17,12 @@ import {
 // --------------------------------------------------
 
 const NavContainer = styled.div`
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
 	${ props => bpEither("height", props.height ) };
+	z-index: 10;
 `;
 
 const NavWrapper = styled.nav`
@@ -28,11 +33,13 @@ const NavWrapper = styled.nav`
 	z-index: 5;
 
 	${ bp.sm.min`${ shadow(0) }` };
-	${ props => bpEither("background-color", props.backgroundColor ) };
+	${ props => !props.clear && bpEither("background-color", props.backgroundColor ) };
 	${ props => bpEither("height", props.height ) };
 
 	${ sm`padding: 0 1em; ` };
 	${ bp.md.min`padding: 0 3em; ` };
+	
+	${ props => props.shadow && shadow(1) };
 `;
 
 const NavInner = styled.div`
@@ -66,6 +73,16 @@ const BurgerWrapper = styled.div`
 	margin-top: -20px;
 `;
 
+const Logo = styled.div`
+	position: absolute;
+	${ props => bpEither("height", props.height ) };
+	max-width: 30%;
+	align-items: center;
+	display: flex;
+	padding-left: 1em;
+	font-family: ${ props => props.font };
+`;
+
 // -------------------------------
 
 export default class Nav extends React.Component {
@@ -80,10 +97,13 @@ export default class Nav extends React.Component {
 		return (
 			<NavContainer
 				height = { this.props.height }
+				clear = { this.props.clear }
 			>
 				<NavWrapper
 					height = { this.props.height }
 					backgroundColor = { this.props.backgroundColor }
+					clear = { this.props.clear || false }
+					shadow = { this.props.shadow || false }
 				>
 					<NavInner>
 						<MobileContent>
@@ -104,6 +124,7 @@ export default class Nav extends React.Component {
 									open: false,
 								})
 							}
+							{ ...this.props }
 							{ ...this.state }
 						>
 							{ this.props.children }
@@ -130,7 +151,12 @@ export default class Nav extends React.Component {
 							</BurgerWrapper>
 						</MobileContent>
 
-						{ this.props.logo }
+						<Logo
+							font = { this.props.font }
+							height = { this.props.height }
+						>
+							{ this.props.logo }
+						</Logo>
 					</NavInner>
 				</NavWrapper>
 			</NavContainer>
@@ -140,8 +166,8 @@ export default class Nav extends React.Component {
 
 Nav.defaultProps = {
 	padding: {
-		xs: "30px",
-		other: "30px",
+		xs: "15px",
+		other: "20px",
 	},
 	color: {
 		xs: "#fff",
@@ -154,5 +180,18 @@ Nav.defaultProps = {
 	height: {
 		xs: "50px",
 		other: "70px",
+	},
+	font: "sans-serif",
+	textTransform: {
+		xs: "uppercase",
+		other: "uppercase",
+	},
+	topOffset: {
+		xs: "50px",
+		other: "70px",
+	},
+	margin: {
+		xs: "20px",
+		other: "30px",
 	},
 };

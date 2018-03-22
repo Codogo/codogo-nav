@@ -3,11 +3,11 @@ import styled, { css, } from "styled-components";
 
 import {
 	bp,
-	shadow,
-	xs,
-	transparent,
-	clearfix,
 	bpEither,
+	clearfix,
+	shadow,
+	transparent,
+	xs,
 } from "codogo-utility-functions";
 
 // --------------------------------------------------
@@ -20,7 +20,7 @@ const linksStyle = [
 		position: absolute;
 		right: 0;
 		top: ${ props => props.topOffset.xs };
-		transform: translateY(${ props => ( props.open ? 0 : -110 ) }%);
+		transform: translateY(${ props => ( props.open ? 0 : -150 ) }%);
 		transition: 0.3s all ease-out;
 		${ shadow(2) };
 	`,
@@ -42,13 +42,13 @@ const LinksWrapper = styled.div`
 const linkStyle = [
 	css`
 		display: block;
-		padding: ${ props => props.margin.xs };
+		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
 		color: ${ props => props.color.xs };
 	`,
 	css`
 		line-height: ${ props => props.height.other };
-		padding: 0 ${ props => props.margin.other };
+		padding: 0 ${ props => props.padding.other };
 		letter-spacing: 0.1em;
 		color: ${ props => props.color.other };
 
@@ -58,9 +58,10 @@ const linkStyle = [
 	`,
 ];
 
-const Link = styled.div`
-	text-transform: ${ props => props.textTransform };
+const LinkWrapper = styled.div`
+	${ props => bpEither("text-transform", props.textTransform ) };
 	font-size: 1.1em;
+	font-family: ${ props => props.font }
 
 	&.active {
 		font-weight: bold;
@@ -86,48 +87,25 @@ const Links = props => (
 	>
 		{ 
 			props.children.map(
-				(navlink, i) => 
-				<Link 
-					key = { 'navlink' + i }
-					{ ...props }
-				>
-					{ navlink }
-				</Link>
+				(navlink, i) => {
+					return navlink.notLink === true ?
+					(
+						<div>
+							{ navlink }
+						</div>
+					) :
+					( 
+						<LinkWrapper 
+							key = { 'navlink' + i }
+							{ ...props }
+						>
+							{ navlink }
+						</LinkWrapper>
+					)
+				}
 			) 
 		}
 	</LinksWrapper>
 );
-
-Links.defaultProps = {
-	textTransform: {
-		xs: "uppercase",
-		other: "uppercase",
-	},
-	topOffset: {
-		xs: "50px",
-		other: "70px",
-	},
-	padding: {
-		xs: "20px",
-		other: "30px",
-	},
-	margin: {
-		xs: "20px",
-		other: "30px",
-	},
-	height: {
-		xs: "50px",
-		other: "30px",
-	},
-	color: {
-		xs: "#fff",
-		other: "#fff",
-	},
-	backgroundColor: {
-		xs: "#333",
-		other: "#333",
-	},
-};
-
 
 export default Links
