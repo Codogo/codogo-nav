@@ -11,6 +11,7 @@ import {
 	contained,
 	shadow,
 	sm,
+	xs,
 	transparent,
 } from "codogo-utility-functions";
 
@@ -32,7 +33,6 @@ const NavWrapper = styled.nav`
 	top: 0;
 	z-index: 5;
 
-	${ bp.sm.min`${ shadow(0) }` };
 	${ props => !props.clear && bpEither("background-color", props.backgroundColor ) };
 	${ props => bpEither("height", props.height ) };
 
@@ -46,6 +46,12 @@ const NavInner = styled.div`
 	width: 100%;
 	height: 100%;
 	position: relative;
+
+	${ bp.sm.min`
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	` };
 `;
 
 const MobileContent = styled.div`
@@ -74,12 +80,15 @@ const BurgerWrapper = styled.div`
 `;
 
 const Logo = styled.div`
-	position: absolute;
+	${ xs`
+		position: absolute;
+	` };
 	${ props => bpEither("height", props.height ) };
 	max-width: 30%;
 	align-items: center;
 	display: flex;
 	padding-left: 1em;
+	order: 1;
 	font-family: ${ props => props.font };
 `;
 
@@ -166,8 +175,8 @@ export default class Nav extends React.Component {
 
 Nav.defaultProps = {
 	padding: {
-		xs: "15px",
-		other: "20px",
+		xs: "0.5em",
+		other: "1em",
 	},
 	color: {
 		xs: "#fff",
@@ -182,6 +191,10 @@ Nav.defaultProps = {
 		other: "70px",
 	},
 	font: "sans-serif",
+	fontSize: {
+		xs: "0.8em",
+		other: "1.1em",
+	},
 	textTransform: {
 		xs: "uppercase",
 		other: "uppercase",
