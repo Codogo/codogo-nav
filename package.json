@@ -1,7 +1,7 @@
 {
   "name": "codogo-nav",
   "description": "Default navigation bar that hopefully actually works",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Max Clayton Clowes <maxcc@me.com>",
   "dependencies": {
     "codogo-utility-functions": "^1.0.3",
@@ -12,8 +12,8 @@
     "velocity-animate": "^1.5.1"
   },
   "devDependencies": {
-    "codogo-scripts": "3.2.9",
     "babel-core": "^6.26.0",
+    "codogo-scripts": "3.2.9",
     "prettier": "^1.11.1"
   },
   "eslintConfig": {
