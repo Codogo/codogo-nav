@@ -27,9 +27,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "format": "codogo-scripts format",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "start": "codogo-scripts start",
+    "build": "codogo-scripts pack",
+    "format": "codogo-scripts format"
   }
 }
