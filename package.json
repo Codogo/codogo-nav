@@ -3,6 +3,10 @@
   "description": "Default navigation bar that hopefully actually works",
   "version": "1.0.6",
   "author": "Max Clayton Clowes <maxcc@me.com>",
+  "main": "lib/index.js",
+  "babel": {
+	  "presets": [ "codogo" ]
+  },
   "dependencies": {
     "codogo-utility-functions": "^1.0.4",
     "react": "16.2.0",
@@ -11,9 +15,10 @@
     "velocity-animate": "^1.5.1"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "codogo-scripts": "3.2.9",
+    "eslint": "^4.18.2",
     "prettier": "^1.11.1"
   },
   "eslintConfig": {
@@ -27,7 +32,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "codogo-scripts pack",
+    "build": "codogo-scripts build",
     "format": "codogo-scripts format"
   }
 }
