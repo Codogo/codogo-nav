@@ -71,6 +71,27 @@ const LinkWrapper = styled.div`
 	${ bp.sm.min`${ linkStyle[1] }` };
 `;
 
+const Dropdown = styled.div`
+	position: absolute;
+	top: 0;
+`;
+
+const DropdownLink = styled.div`
+	${ props => bpEither("text-transform", props.textTransform) };
+	${ props => bpEither("font-size", props.fontSize) };
+	font-family: ${ props => props.font } a {
+		${ clearfix.link };
+		${ props => bpEither("color", props.color) };
+	}
+
+	> .active {
+		font-weight: bold;
+	}
+
+	${ xs`${ linkStyle[0] }` };
+	${ bp.sm.min`${ linkStyle[1] }` };
+`;
+
 // --------------------------------------------------
 
 const Links = props => (
@@ -87,6 +108,18 @@ const Links = props => (
 			) : (
 				<LinkWrapper key = { "navlink" + i } { ...props }>
 					{navlink}
+
+					{
+						navlink.dropdown && (
+							<Dropdown>
+								{navlink.dropdown.map((dropdownLink, i) => (
+									<DropdownLink key = { `${ dropdownLink }-${ i }` }>
+										{dropdownLink}
+									</DropdownLink>
+								))}
+							</Dropdown>
+						)
+					}
 				</LinkWrapper>
 			);
 		})}
