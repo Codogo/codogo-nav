@@ -50,7 +50,8 @@ const linkStyle = [
 		color: ${ props => props.color.other };
 
 		&:hover {
-			text-decoration: underline;
+			text-decoration: ${ props => !props.underlineColor && "underline" };
+			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
 	`,
 ];
@@ -65,6 +66,7 @@ const LinkWrapper = styled.div`
 
 	> .active {
 		font-weight: bold;
+		border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 	}
 
 	${ xs`${ linkStyle[0] }` };
@@ -81,15 +83,17 @@ const Links = props => (
 		font = { props.font }
 		topOffset = { props.topOffset }
 	>
-		{props.children.map((navlink, i) => {
-			return navlink.notLink === true ? (
-				<div key = { "navlink" + i }>{navlink}</div>
-			) : (
-				<LinkWrapper key = { "navlink" + i } { ...props }>
-					{navlink}
-				</LinkWrapper>
-			);
-		})}
+		{
+			props.children.map((navlink, i) => {
+				return navlink.notLink === true ? (
+					<div key = { "navlink" + i }>{navlink}</div>
+				) : (
+					<LinkWrapper key = { "navlink" + i } { ...props }>
+						{ navlink }
+					</LinkWrapper>
+				);
+			})
+		}
 	</LinksWrapper>
 );
 
