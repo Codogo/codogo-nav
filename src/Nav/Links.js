@@ -48,10 +48,15 @@ const linkStyle = [
 		padding: 0 ${ props => props.padding.other };
 		letter-spacing: 0.1em;
 		color: ${ props => props.color.other };
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		&:hover {
 			text-decoration: ${ props => !props.underlineColor && "underline" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			padding-top: ${ props => props.underlineColor && "3px" };
 		}
 	`,
 ];
@@ -59,7 +64,9 @@ const linkStyle = [
 const LinkWrapper = styled.div`
 	${ props => bpEither("text-transform", props.textTransform) };
 	${ props => bpEither("font-size", props.fontSize) };
-	font-family: ${ props => props.font } a {
+	font-family: ${ props => props.font };
+
+	a {
 		${ clearfix.link };
 		${ props => bpEither("color", props.color) };
 	}
@@ -67,6 +74,7 @@ const LinkWrapper = styled.div`
 	> .active {
 		font-weight: bold;
 		border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+		padding-top: ${ props => props.underlineColor && "3px" };
 	}
 
 	${ xs`${ linkStyle[0] }` };
@@ -84,11 +92,12 @@ const Links = props => (
 		topOffset = { props.topOffset }
 	>
 		{
+			console.log(props),
 			props.children.map((navlink, i) => {
 				return navlink.notLink === true ? (
 					<div key = { "navlink" + i }>{navlink}</div>
 				) : (
-					<LinkWrapper key = { "navlink" + i } { ...props }>
+					<LinkWrapper key = { "navlink" + i } underlineColor = "red" { ...props }>
 						{ navlink }
 					</LinkWrapper>
 				);
