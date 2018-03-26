@@ -55,8 +55,6 @@ const linkStyle = [
 
 		&:hover {
 			text-decoration: ${ props => !props.underlineColor && "underline" };
-			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
-			padding-top: ${ props => props.underlineColor && "3px" };
 		}
 	`,
 ];
@@ -69,6 +67,11 @@ const LinkWrapper = styled.div`
 	a {
 		${ clearfix.link };
 		${ props => bpEither("color", props.color) };
+	}
+
+	&:hover {
+		border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+		padding-top: ${ props => props.underlineColor && "3px" };
 	}
 
 	> .active {
