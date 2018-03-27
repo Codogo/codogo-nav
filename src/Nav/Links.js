@@ -53,11 +53,22 @@ const linkStyle = [
 		align-items: center;
 
 		a {
-			padding: 2em ${ props => props.padding.other };
+			display: flex;
+			height: 100%;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			padding: 0 ${ props => props.padding.other };
+
+			&.active {
+				padding-top: 3px;
+				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			}
 		}
 
 		&:hover {
 			a {
+				padding-top: 3px;
 				text-decoration: ${ props => !props.underlineColor && "underline" };
 				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 			}
@@ -75,11 +86,10 @@ const LinkWrapper = styled.div`
 
 	a {
 		${ clearfix.link };
-		${ props => bpEither("color", props.color) };
 		
 		&.active {
+			${ props => bpEither("color", props.color) };
 			font-weight: bold;
-			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
 	}
 `;

@@ -173,7 +173,7 @@ export default class Nav extends React.Component {
 
 Nav.defaultProps = {
 	padding: {
-		xs: "0.5em",
+		xs: "0.75em",
 		other: "1em",
 	},
 	color: {
