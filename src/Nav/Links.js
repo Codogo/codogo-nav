@@ -42,11 +42,11 @@ const linkStyle = [
 		display: block;
 		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
-		color: ${ props => props.color.xs };
+		color: ${ props => props.highlightColor.xs };
 	`,
 	css`
 		letter-spacing: 0.1em;
-		color: ${ props => props.color.other };
+		color: ${ props => props.highlightColor.other };
 		height: 100%;
 		display: flex;
 		justify-content: center;
@@ -86,9 +86,10 @@ const LinkWrapper = styled.div`
 
 	a {
 		${ clearfix.link };
+		${ props => bpEither("color", props.color) };
 		
 		&.active {
-			${ props => bpEither("color", props.color) };
+			${ props => bpEither("color", props.highlightColor) };
 			font-weight: bold;
 		}
 	}

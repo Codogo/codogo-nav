@@ -154,7 +154,7 @@ export default class Nav extends React.Component {
 								}
 							>
 								<Burger
-									color = { this.props.color }
+									highlightColor = { this.props.highlightColor }
 									backgroundColor = { this.props.backgroundColor }
 									{ ...this.state }
 								/>
@@ -177,8 +177,12 @@ Nav.defaultProps = {
 		other: "1em",
 	},
 	color: {
-		xs: "#fff",
-		other: "#fff",
+		xs: "#333",
+		other: "#333",
+	},
+	highlightColor: {
+		xs: "#888",
+		other: "#888",
 	},
 	backgroundColor: {
 		xs: "#333",

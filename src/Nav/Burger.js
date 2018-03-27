@@ -16,7 +16,7 @@ const BurgerWrapper = styled.div`
 const Bar = styled.div`
 	width: ${ props => props.layerWidth }px;
 	height: ${ props => props.layerHeight }px;
-	background-color: ${ props => props.color.xs };
+	background-color: ${ props => props.highlightColor.xs };
 	border-radius: ${ props => props.borderRadius }px;
 	position: absolute;
 	transition-property: transform;
@@ -100,12 +100,6 @@ const Burger = props => (
 
 Burger.defaultProps = {
 	borderRadius: 4,
-	color: {
-		xs: "#fff",
-	},
-	backgroundColor: {
-		xs: "#333",
-	},
 	layerHeight: 3,
 	layerSpacing: 6,
 	layerWidth: 30,
