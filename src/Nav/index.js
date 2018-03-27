@@ -81,16 +81,19 @@ const BurgerWrapper = styled.div`
 `;
 
 const Logo = styled.div`
-	${ xs`
-		position: absolute;
-	` };
-	${ props => bpEither("height", props.height) };
-	max-width: 30%;
 	align-items: center;
 	display: flex;
-	padding-left: 1em;
-	order: 1;
 	font-family: ${ props => props.font };
+	max-width: 30%;
+	order: 1;
+	padding-left: 1em;
+
+	${ props => bpEither("height", props.height) };
+
+	${ xs`
+		position: absolute;
+		max-width: 60%;
+	` };
 `;
 
 // -------------------------------
