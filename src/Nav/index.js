@@ -197,10 +197,6 @@ Nav.defaultProps = {
 		xs: "0.8em",
 		other: "1.1em",
 	},
-	textTransform: {
-		xs: "uppercase",
-		other: "uppercase",
-	},
 	topOffset: {
 		xs: "50px",
 		other: "70px",
