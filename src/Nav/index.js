@@ -197,6 +197,10 @@ Nav.defaultProps = {
 		xs: "0.8em",
 		other: "1.1em",
 	},
+	textTransform: {
+		xs: "none",
+		other: "none",
+	},
 	topOffset: {
 		xs: "50px",
 		other: "70px",
