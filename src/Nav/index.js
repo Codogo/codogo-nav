@@ -18,20 +18,24 @@ import {
 // --------------------------------------------------
 
 const NavContainer = styled.div`
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
+	${ props => props.fixed &&
+		`
+			position: fixed;
+			left: 0;
+			right: 0;
+			top: 0;
+		`
+	};
 	${ props => bpEither("height", props.height) };
 	z-index: 10;
 `;
 
 const NavWrapper = styled.nav`
+	z-index: 5;
 	left: 0;
 	position: absolute;
 	right: 0;
 	top: 0;
-	z-index: 5;
 
 	${ props =>
 		!props.clear && bpEither("background-color", props.backgroundColor) };
@@ -81,16 +85,19 @@ const BurgerWrapper = styled.div`
 `;
 
 const Logo = styled.div`
-	${ xs`
-		position: absolute;
-	` };
-	${ props => bpEither("height", props.height) };
-	max-width: 30%;
 	align-items: center;
 	display: flex;
-	padding-left: 1em;
-	order: 1;
 	font-family: ${ props => props.font };
+	max-width: 30%;
+	order: 1;
+	padding-left: 1em;
+
+	${ props => bpEither("height", props.height) };
+
+	${ xs`
+		position: absolute;
+		max-width: 60%;
+	` };
 `;
 
 // -------------------------------
@@ -105,7 +112,11 @@ export default class Nav extends React.Component {
 
 	render() {
 		return (
-			<NavContainer height = { this.props.height } clear = { this.props.clear }>
+			<NavContainer 
+				height = { this.props.height }
+				fixed = { this.props.fixed || false }
+				clear = { this.props.clear || false }
+			>
 				<NavWrapper
 					height = { this.props.height }
 					backgroundColor = { this.props.backgroundColor }
@@ -134,7 +145,7 @@ export default class Nav extends React.Component {
 							{ ...this.props }
 							{ ...this.state }
 						>
-							{this.props.children}
+							{ this.props.children }
 						</Links>
 
 						<MobileContent>
@@ -151,7 +162,7 @@ export default class Nav extends React.Component {
 								}
 							>
 								<Burger
-									color = { this.props.color }
+									highlightColor = { this.props.highlightColor }
 									backgroundColor = { this.props.backgroundColor }
 									{ ...this.state }
 								/>
@@ -170,12 +181,16 @@ export default class Nav extends React.Component {
 
 Nav.defaultProps = {
 	padding: {
-		xs: "0.5em",
+		xs: "0.75em",
 		other: "1em",
 	},
 	color: {
-		xs: "#fff",
-		other: "#fff",
+		xs: "#333",
+		other: "#333",
+	},
+	highlightColor: {
+		xs: "#888",
+		other: "#888",
 	},
 	backgroundColor: {
 		xs: "#333",
@@ -189,10 +204,6 @@ Nav.defaultProps = {
 	fontSize: {
 		xs: "0.8em",
 		other: "1.1em",
-	},
-	textTransform: {
-		xs: "uppercase",
-		other: "uppercase",
 	},
 	topOffset: {
 		xs: "50px",

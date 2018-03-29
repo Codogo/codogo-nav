@@ -42,15 +42,36 @@ const linkStyle = [
 		display: block;
 		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
-		color: ${ props => props.color.xs };
+		color: ${ props => props.highlightColor.xs };
 	`,
 	css`
-		padding: 0 ${ props => props.padding.other };
 		letter-spacing: 0.1em;
-		color: ${ props => props.color.other };
+		color: ${ props => props.highlightColor.other };
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		a {
+			display: flex;
+			height: 100%;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			padding: 0 ${ props => props.padding.other };
+
+			&.active {
+				padding-top: ${ props => !props.underlineColor && "3px" };
+				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			}
+		}
 
 		&:hover {
-			text-decoration: underline;
+			a {
+				padding-top: ${ props => !props.underlineColor && "3px" };
+				text-decoration: ${ props => !props.underlineColor && "underline" };
+				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			}
 		}
 	`,
 ];
@@ -58,17 +79,20 @@ const linkStyle = [
 const LinkWrapper = styled.div`
 	${ props => bpEither("text-transform", props.textTransform) };
 	${ props => bpEither("font-size", props.fontSize) };
-	font-family: ${ props => props.font } a {
-		${ clearfix.link };
-		${ props => bpEither("color", props.color) };
-	}
-
-	> .active {
-		font-weight: bold;
-	}
+	font-family: ${ props => props.font };
 
 	${ xs`${ linkStyle[0] }` };
 	${ bp.sm.min`${ linkStyle[1] }` };
+
+	a {
+		${ clearfix.link };
+		${ props => bpEither("color", props.color) };
+		
+		&.active {
+			${ props => bpEither("color", props.highlightColor) };
+			font-weight: bold;
+		}
+	}
 `;
 
 const Dropdown = styled.div`
