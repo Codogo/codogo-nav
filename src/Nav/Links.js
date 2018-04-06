@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css, } from "styled-components";
 
+import DropdownLinks from "./DropdownLinks";
+
 import {
 	bp,
 	bpEither,
@@ -43,6 +45,12 @@ const linkStyle = [
 		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
 		color: ${ props => props.highlightColor.xs };
+
+		input[type="checkbox"]:checked + div {
+			opacity: 0;
+			max-height: 0;
+			border: none;
+		}
 	`,
 	css`
 		letter-spacing: 0.1em;
@@ -52,23 +60,24 @@ const linkStyle = [
 		justify-content: center;
 		align-items: center;
 
-		a {
+		> a {
 			display: flex;
-			height: 100%;
 			flex-direction: row;
 			justify-content: center;
 			align-items: center;
 			padding: 0 ${ props => props.padding.other };
 
+			${ props => props.underlineColor && "height: 100%" };
+
 			&.active {
-				padding-top: ${ props => !props.underlineColor && "3px" };
+				padding-top: ${ props => props.underlineColor && "3px" };
 				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 			}
 		}
 
 		&:hover {
-			a {
-				padding-top: ${ props => !props.underlineColor && "3px" };
+			> a {
+				padding-top: ${ props => props.underlineColor && "3px" };
 				text-decoration: ${ props => !props.underlineColor && "underline" };
 				border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 			}
@@ -85,6 +94,7 @@ const LinkWrapper = styled.div`
 	${ bp.sm.min`${ linkStyle[1] }` };
 
 	a {
+		white-space: nowrap;
 		${ clearfix.link };
 		${ props => bpEither("color", props.color) };
 		
@@ -93,27 +103,25 @@ const LinkWrapper = styled.div`
 			font-weight: bold;
 		}
 	}
+
+	&:hover {
+		.navlink-dropdown {
+			display: flex;
+		}
+	}
 `;
 
-const Dropdown = styled.div`
+const DropdownArrow = styled.label`
+	font-size: 0.8em;
 	position: absolute;
-	top: 0;
+	right: 1em;
+	${ bp.sm.min`display: none;` };
 `;
 
-const DropdownLink = styled.div`
-	${ props => bpEither("text-transform", props.textTransform) };
-	${ props => bpEither("font-size", props.fontSize) };
-	font-family: ${ props => props.font } a {
-		${ clearfix.link };
-		${ props => bpEither("color", props.color) };
-	}
-
-	> .active {
-		font-weight: bold;
-	}
-
-	${ xs`${ linkStyle[0] }` };
-	${ bp.sm.min`${ linkStyle[1] }` };
+const DropdownInput = styled.input`
+	position: absolute;
+	left: -999em;
+	${ bp.sm.min`display: none;` };
 `;
 
 // --------------------------------------------------
@@ -131,19 +139,13 @@ const Links = props => (
 				<div key = { "navlink" + i }>{navlink}</div>
 			) : (
 				<LinkWrapper key = { "navlink" + i } { ...props }>
-					{navlink}
+					{ navlink}
 
-					{
-						navlink.dropdown && (
-							<Dropdown>
-								{navlink.dropdown.map((dropdownLink, i) => (
-									<DropdownLink key = { `${ dropdownLink }-${ i }` }>
-										{dropdownLink}
-									</DropdownLink>
-								))}
-							</Dropdown>
-						)
-					}
+					{ navlink.props.dropdown && <DropdownArrow htmlFor = { "item-" + i }>▼</DropdownArrow> }
+	  			
+	  				{ navlink.props.dropdown && <DropdownInput type = "checkbox" name = "one" id = { "item-" + i } htmlChecked /> }
+
+					{ navlink.props.dropdown && <DropdownLinks dropdown = { navlink.props.dropdown } /> }
 				</LinkWrapper>
 			);
 		})}

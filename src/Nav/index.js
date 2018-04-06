@@ -27,6 +27,7 @@ const NavContainer = styled.div`
 		`
 	};
 	${ props => bpEither("height", props.height) };
+	${ props => props.clear && `height: 0 !important;` }
 	z-index: 10;
 `;
 
@@ -170,7 +171,7 @@ export default class Nav extends React.Component {
 						</MobileContent>
 
 						<Logo font = { this.props.font } height = { this.props.height }>
-							{this.props.logo}
+							{ this.props.logo }
 						</Logo>
 					</NavInner>
 				</NavWrapper>
