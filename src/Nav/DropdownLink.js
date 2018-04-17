@@ -30,11 +30,11 @@ const LinkStyles = [
 		display: flex;
 		flex-direction: row;
 		height: 100%;
-		justify-content: center;
 		letter-spacing: 0.1em;
 		padding: 0.5em ${ props => props.padding.other };
 
 		justify-content: left;
+		${ props => props.clear && `justify-content: center;` };
 
 		${ props => props.underlineColor && "height: 100%" };
 
@@ -74,6 +74,7 @@ class DropdownLink extends Component {
 				padding = { this.props.padding }
 				color = { this.props.color }
 				onclick = { this.props.close }
+				clear = { this.props.clear }
 			>
 				{ this.props.content }
 			</StyledLink>

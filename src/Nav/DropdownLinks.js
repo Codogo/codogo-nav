@@ -29,6 +29,8 @@ const dropdownStyle = [
 		display: none;
 		flex-direction: column;
 		position: absolute;
+
+		${ props => props.clear && `border-radius: 3px` };
 		
 		${ shadow(2) };
 		${ props => props.height && `top: ${ props.height.other }` };
@@ -46,6 +48,7 @@ const DropdownLinks = props => (
 	<Dropdown
 		className = "navlink-dropdown"
 		height = { props.height }
+		clear = { props.clear }
 	>
 		{ 
 			props.dropdown.map(
@@ -59,6 +62,7 @@ const DropdownLinks = props => (
 						padding = { props.padding }
 						color = { props.highlightColor }
 						close = { props.close }
+						clear = { props.clear }
 					/>
 				)
 			)

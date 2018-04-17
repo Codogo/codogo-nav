@@ -175,6 +175,7 @@ const Links = props => (
 							color = { props.color }
 							height = { props.height }
 							onClick = { props.close }
+							clear = { props.clear }
 						/> 
 					}
 				</LinkWrapper>
