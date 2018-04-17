@@ -44,17 +44,25 @@ const linkStyle = [
 		display: block;
 		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
-		color: ${ props => props.highlightColor.xs };
+		color: ${ props => props.color.xs };
 
-		input[type="checkbox"]:checked + div {
+		input[type="checkbox"]:checked ~ div {
 			opacity: 0;
 			max-height: 0;
 			border: none;
 		}
+
+		input[type="checkbox"]:not(:checked) ~ div {
+			margin-top: 10px;
+		}
+
+		input[type="checkbox"]:not(:checked) + label {
+			transform: rotate(180deg);
+		}
 	`,
 	css`
 		letter-spacing: 0.1em;
-		color: ${ props => props.highlightColor.other };
+		color: ${ props => props.color.other };
 		height: 100%;
 		display: flex;
 		justify-content: center;
@@ -93,7 +101,7 @@ const LinkWrapper = styled.div`
 	${ xs`${ linkStyle[0] }` };
 	${ bp.sm.min`${ linkStyle[1] }` };
 
-	a {
+	> a {
 		white-space: nowrap;
 		${ clearfix.link };
 		${ props => bpEither("color", props.color) };
@@ -115,6 +123,7 @@ const DropdownArrow = styled.label`
 	font-size: 0.8em;
 	position: absolute;
 	right: 1em;
+	cursor: pointer;
 	${ bp.sm.min`display: none;` };
 `;
 
@@ -136,16 +145,38 @@ const Links = props => (
 	>
 		{props.children.map((navlink, i) => {
 			return navlink.notLink === true ? (
-				<div key = { "navlink" + i }>{navlink}</div>
+				<div 
+					key = { "navlink" + i }
+					onclick = { props.close }
+				>
+					{ navlink }
+				</div>
 			) : (
-				<LinkWrapper key = { "navlink" + i } { ...props }>
+				<LinkWrapper 
+					key = { "navlink" + i }
+					onclick = { props.close } 
+					{ ...props }
+				>
 					{ navlink}
-
-					{ navlink.props.dropdown && <DropdownArrow htmlFor = { "item-" + i }>▼</DropdownArrow> }
 	  			
-	  				{ navlink.props.dropdown && <DropdownInput type = "checkbox" name = "one" id = { "item-" + i } htmlChecked /> }
+	  				{ navlink.props.dropdown && 
+	  					<DropdownInput type = "checkbox" name = "one" id = { "item-" + i } defaultChecked = { true }/> }
 
-					{ navlink.props.dropdown && <DropdownLinks dropdown = { navlink.props.dropdown } /> }
+	  				{ navlink.props.dropdown && <DropdownArrow htmlFor = { "item-" + i }>▼</DropdownArrow> }
+
+					{ 
+						navlink.props.dropdown && 
+						<DropdownLinks 
+							close = { props.close }
+							dropdown = { navlink.props.dropdown } 
+							underlineColor = { props.underlineColor }
+							padding = { props.padding }
+							highlightColor = { props.highlightColor }
+							color = { props.color }
+							height = { props.height }
+							onClick = { props.close }
+						/> 
+					}
 				</LinkWrapper>
 			);
 		})}

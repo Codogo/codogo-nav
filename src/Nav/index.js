@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import Links from "./Links";
 import Burger from "./Burger";
-import Fade from "./Fade";
 
 import {
 	bp,
@@ -112,6 +111,18 @@ export default class Nav extends React.Component {
 	}
 
 	render() {
+		const CloseMenu = () => {
+			this.setState({
+				open: false,
+			})
+		};
+
+		const ToggleMenu = () => {
+			this.setState({
+				open: !this.state.open,
+			})
+		};
+
 		return (
 			<NavContainer 
 				height = { this.props.height }
@@ -125,24 +136,7 @@ export default class Nav extends React.Component {
 					shadow = { this.props.shadow || false }
 				>
 					<NavInner>
-						<MobileContent>
-							<Fade visible = { this.state.open }>
-								<Dark
-									onClick = { () =>
-										this.setState({
-											open: false,
-										})
-									}
-								/>
-							</Fade>
-						</MobileContent>
-
 						<Links
-							close = { () =>
-								this.setState({
-									open: false,
-								})
-							}
 							{ ...this.props }
 							{ ...this.state }
 						>
@@ -156,11 +150,7 @@ export default class Nav extends React.Component {
 							/>
 
 							<BurgerWrapper
-								onClick = { () =>
-									this.setState({
-										open: !this.state.open,
-									})
-								}
+								onClick = { ToggleMenu }
 							>
 								<Burger
 									highlightColor = { this.props.highlightColor }
@@ -181,21 +171,21 @@ export default class Nav extends React.Component {
 }
 
 Nav.defaultProps = {
-	padding: {
+	padding: { // 
 		xs: "0.75em",
 		other: "1em",
 	},
-	color: {
-		xs: "#333",
+	color: { // Font color
+		xs: "#fff",
 		other: "#333",
 	},
-	highlightColor: {
-		xs: "#888",
+	highlightColor: { // Hover on links, burger menu
+		xs: "#ddd",
 		other: "#888",
 	},
 	backgroundColor: {
 		xs: "#333",
-		other: "#333",
+		other: "#fff",
 	},
 	height: {
 		xs: "50px",
