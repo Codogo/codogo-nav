@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Links from "./Links";
 import Burger from "./Burger";
+import theme from "./theme";
 
 import {
 	bp,
@@ -64,12 +65,6 @@ const MobileContent = styled.div`
 	${ contained() };
 `;
 
-const Dark = styled.div`
-	background: ${ transparent(0.5) };
-	position: fixed;
-	${ contained() };
-`;
-
 const Overlay = styled.div`
 	${ contained() };
 	${ ({ open, }) => (open ? shadow(1) : "") };
@@ -103,109 +98,96 @@ const Logo = styled.div`
 // -------------------------------
 
 export default class Nav extends React.Component {
+	static defaultProps = theme;
+
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			open: false,
 		};
 	}
 
-	render() {
-		const CloseMenu = () => {
-			this.setState({
-				open: false,
-			})
-		};
+	CloseMenu = () => {
+		this.setState({
+			open: false,
+		})
+	};
 
-		const ToggleMenu = () => {
-			this.setState({
-				open: !this.state.open,
-			})
-		};
+	ToggleMenu = () => {
+		this.setState({
+			open: !this.state.open,
+		})
+	};
+
+	render() {
+		const {
+			backgroundColor,
+			children,
+			clear,
+			fixed,
+			font,
+			height,
+			highlightColor,
+			shadow,
+			logo,
+			links,
+		} = this.props;
+
+		const {
+			open,
+		} = this.state;
 
 		return (
 			<NavContainer 
-				height = { this.props.height }
-				fixed = { this.props.fixed || false }
-				clear = { this.props.clear || false }
+				height = { height }
+				fixed = { fixed }
+				clear = { clear }
 			>
 				<NavWrapper
-					height = { this.props.height }
-					backgroundColor = { this.props.backgroundColor }
-					clear = { this.props.clear || false }
-					shadow = { this.props.shadow || false }
+					height = { height }
+					backgroundColor = { backgroundColor }
+					clear = { clear }
+					shadow = { shadow }
 				>
 					<NavInner>
 						<Links
-							{ ...this.props }
-							{ ...this.state }
+							theme = { {
+								...this.props,
+							} }
+							open = { open }
+							close = { this.CloseMenu }
+							links = { links }
 						>
-							{ this.props.children }
+							{ children }
 						</Links>
 
 						<MobileContent>
 							<Overlay
-								backgroundColor = { this.props.backgroundColor }
-								{ ...this.state }
+								backgroundColor = { backgroundColor }
+								open = { open }
 							/>
 
 							<BurgerWrapper
-								onClick = { ToggleMenu }
+								onClick = { this.ToggleMenu }
 							>
 								<Burger
-									highlightColor = { this.props.highlightColor }
-									backgroundColor = { this.props.backgroundColor }
-									{ ...this.state }
+									highlightColor = { highlightColor }
+									backgroundColor = { backgroundColor }
+									open = { open }
 								/>
 							</BurgerWrapper>
 						</MobileContent>
 
-						<Logo font = { this.props.font } height = { this.props.height }>
-							{ this.props.logo }
-						</Logo>
+						{
+							logo && 
+							<Logo font = { font } height = { height }>
+								{ logo }
+							</Logo>
+						}
 					</NavInner>
 				</NavWrapper>
 			</NavContainer>
 		);
 	}
 }
-
-Nav.defaultProps = {
-	padding: { // 
-		xs: "0.75em",
-		other: "1em",
-	},
-	color: { // Font color
-		xs: "#fff",
-		other: "#333",
-	},
-	highlightColor: { // Hover on links, burger menu
-		xs: "#ddd",
-		other: "#888",
-	},
-	backgroundColor: {
-		xs: "#333",
-		other: "#fff",
-	},
-	height: {
-		xs: "50px",
-		other: "70px",
-	},
-	font: "sans-serif",
-	fontSize: {
-		xs: "0.8em",
-		other: "1.1em",
-	},
-	textTransform: {
-		xs: "none",
-		other: "none",
-	},
-	topOffset: {
-		xs: "50px",
-		other: "70px",
-	},
-	margin: {
-		xs: "20px",
-		other: "30px",
-	},
-};

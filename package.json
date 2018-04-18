@@ -36,5 +36,8 @@
   "scripts": {
     "build": "codogo-scripts build",
     "format": "codogo-scripts format"
-  }
+  },
+  "files": [
+    "lib",
+  ]
 }

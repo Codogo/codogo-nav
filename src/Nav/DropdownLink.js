@@ -54,30 +54,35 @@ const LinkStyles = [
 	`,
 ];
 
+const StyledLink = styled.a`
+	${ xs`${ LinkStyles[0] }` };
+	${ bp.sm.min`${ LinkStyles[1] }` };
+`;
+
 // --------------------------------------------------
 
 class DropdownLink extends Component {
-
 	render() {
-		const Link = this.props.as || "a";
+		const {
+			to,
+			close,
+			theme,
+		} = this.props;
 
-		const StyledLink = styled(Link)`
-			${ xs`${ LinkStyles[0] }` };
-			${ bp.sm.min`${ LinkStyles[1] }` };
-		`;
+		const Link = StyledLink.withComponent( this.props.as || "a" );
 
 		return (
-			<StyledLink 
-				to = { this.props.to } 
-				href = { this.props.to }
-				underlineColor = { this.props.underlineColor }
-				padding = { this.props.padding }
-				color = { this.props.color }
-				onclick = { this.props.close }
-				clear = { this.props.clear }
+			<Link 
+				to = { to } 
+				href = { to }
+				onClick = { close }
+				underlineColor = { theme.underlineColor }
+				padding = { theme.padding }
+				color = { theme.color }
+				clear = { theme.clear }
 			>
 				{ this.props.content }
-			</StyledLink>
+			</Link>
 		)
 	}
 }

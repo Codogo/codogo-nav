@@ -47,22 +47,19 @@ const Dropdown = styled.div`
 const DropdownLinks = props => (
 	<Dropdown
 		className = "navlink-dropdown"
-		height = { props.height }
-		clear = { props.clear }
+		height = { props.theme.height }
+		clear = { props.theme.clear }
 	>
 		{ 
 			props.dropdown.map(
 				(dropdownLink, i) => (
 					<DropdownLink 
-						key = { `${ slugify(dropdownLink.content, {lower: true}) }-${ i }` }
+						key = { dropdownLink.to }
 						as = { dropdownLink.as }
 						content = { dropdownLink.content }
 						to = { dropdownLink.to }
-						underlineColor = { props.underlineColor }
-						padding = { props.padding }
-						color = { props.highlightColor }
 						close = { props.close }
-						clear = { props.clear }
+						theme = { props.theme }
 					/>
 				)
 			)
