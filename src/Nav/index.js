@@ -120,7 +120,7 @@ export default class Nav extends React.Component {
 		})
 	};
 
-	render() {
+	render() { 
 		const {
 			backgroundColor,
 			children,

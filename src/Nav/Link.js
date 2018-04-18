@@ -46,7 +46,6 @@ const linkWrapperStyle = [
 ];
 
 const LinkWrapper = styled.div`
-	${ props => console.log(props) }
 	${ props => bpEither("text-transform", props.textTransform) };
 	${ props => bpEither("font-size", props.fontSize) };
 	font-family: ${ props => props.font };
@@ -63,7 +62,6 @@ const LinkWrapper = styled.div`
 
 const linkStyle = [
 	css`
-		color: ${ props => props.color.xs };
 		font-size: 1em;
 	`,
 	css`
@@ -89,7 +87,6 @@ const linkStyle = [
 		}
 
 		&:hover {
-			color: ${ props => props.color.other };
 			padding-top: ${ props => props.underlineColor && "3px" };
 			text-decoration: ${ props => !props.underlineColor && "underline" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
@@ -108,6 +105,10 @@ const StyledLink = styled.a`
 	&.active {
 		${ props => bpEither("color", props.highlightColor) };
 		font-weight: bold;
+	}
+
+	&:hover {
+		${ props => bpEither("color", props.highlightColor) };
 	}
 `;
 
@@ -128,7 +129,6 @@ const DropdownInput = styled.input`
 // --------------------------------------------------
 
 class Link extends Component {
-
 	render() {
 		const {
 			to,
