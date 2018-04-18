@@ -38,6 +38,7 @@
   "license": "MIT",
   "scripts": {
     "build": "codogo-scripts build",
+    "watch": "codogo-scripts watch",
     "format": "codogo-scripts format"
   }
 }

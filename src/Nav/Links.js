@@ -57,6 +57,7 @@ const Links = props => (
 					dropdown = { navlink.dropdown }
 					border = { navlink.border }
 					theme = { props.theme }
+					close = { props.close }
 				/>
 			);
 		})}
