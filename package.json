@@ -1,7 +1,7 @@
 {
   "name": "codogo-nav",
   "description": "Default navigation bar that hopefully actually works",
-  "version": "1.2.1",
+  "version": "2.1.0",
   "author": "Max Clayton Clowes <maxcc@me.com>",
   "main": "lib/index.js",
   "babel": {
@@ -26,6 +26,9 @@
   "eslintConfig": {
     "extends": "codogo"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "navigation",
     "bar",
@@ -36,8 +39,5 @@
   "scripts": {
     "build": "codogo-scripts build",
     "format": "codogo-scripts format"
-  },
-  "files": [
-    "lib",
-  ]
+  }
 }
