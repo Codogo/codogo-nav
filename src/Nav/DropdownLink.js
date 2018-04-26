@@ -64,12 +64,13 @@ const StyledLink = styled.a`
 class DropdownLink extends Component {
 	render() {
 		const {
+			as,
 			to,
 			close,
 			theme,
 		} = this.props;
 
-		const Link = StyledLink.withComponent( this.props.as || "a" );
+		const Link = StyledLink.withComponent( as || "a" );
 
 		return (
 			<Link 

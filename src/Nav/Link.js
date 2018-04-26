@@ -19,7 +19,6 @@ const linkWrapperStyle = [
 		display: block;
 		padding: ${ props => props.padding.xs };
 		border-bottom: 1px solid ${ transparent(0.1) };
-		color: ${ props => props.color.xs };
 
 		input[type="checkbox"]:checked ~ div {
 			opacity: 0;
@@ -37,7 +36,6 @@ const linkWrapperStyle = [
 	`,
 	css`
 		letter-spacing: 0.1em;
-		color: ${ props => props.color.other };
 		height: 100%;
 		display: flex;
 		justify-content: center;
@@ -46,9 +44,11 @@ const linkWrapperStyle = [
 ];
 
 const LinkWrapper = styled.div`
+	font-family: ${ props => props.font };
+
 	${ props => bpEither("text-transform", props.textTransform) };
 	${ props => bpEither("font-size", props.fontSize) };
-	font-family: ${ props => props.font };
+	${ props => bpEither("color", props.color) };
 
 	${ xs`${ linkWrapperStyle[0] }` };
 	${ bp.sm.min`${ linkWrapperStyle[1] }` };
@@ -82,12 +82,12 @@ const linkStyle = [
 
 		&.active {
 			color: ${ props => props.highlightColor.other };
-			padding-top: ${ props => props.underlineColor && "3px" };
+			margin-top: ${ props => props.underlineColor && "3px" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
 
 		&:hover {
-			padding-top: ${ props => props.underlineColor && "3px" };
+			margin-top: ${ props => props.underlineColor && "3px" };
 			text-decoration: ${ props => !props.underlineColor && "underline" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
