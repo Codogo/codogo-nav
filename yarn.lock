@@ -884,6 +884,30 @@ babel-core@^6.24.0, babel-core@^6.26.0:
     slash "^1.0.0"
     source-map "^0.5.6"
 
+babel-core@^6.26.3:
+  version "6.26.3"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.3.tgz#b2e2f09e342d0f0c88e2f02e067794125e75c207"
+  dependencies:
+    babel-code-frame "^6.26.0"
+    babel-generator "^6.26.0"
+    babel-helpers "^6.24.1"
+    babel-messages "^6.23.0"
+    babel-register "^6.26.0"
+    babel-runtime "^6.26.0"
+    babel-template "^6.26.0"
+    babel-traverse "^6.26.0"
+    babel-types "^6.26.0"
+    babylon "^6.18.0"
+    convert-source-map "^1.5.1"
+    debug "^2.6.9"
+    json5 "^0.5.1"
+    lodash "^4.17.4"
+    minimatch "^3.0.4"
+    path-is-absolute "^1.0.1"
+    private "^0.1.8"
+    slash "^1.0.0"
+    source-map "^0.5.7"
+
 babel-eslint@^8.0.1:
   version "8.2.2"
   resolved "http://registry.npmjs.org/babel-eslint/-/babel-eslint-8.2.2.tgz#1102273354c6f0b29b4ea28a65f97d122296b68b"
@@ -1406,9 +1430,9 @@ babel-polyfill@^6.26.0:
     core-js "^2.5.0"
     regenerator-runtime "^0.10.5"
 
-babel-preset-codogo@^3.2.10, babel-preset-codogo@^3.2.9:
-  version "3.2.10"
-  resolved "https://registry.yarnpkg.com/babel-preset-codogo/-/babel-preset-codogo-3.2.10.tgz#3a3ada4d43e2b9a71af2f134c50bd0c31be6076e"
+babel-preset-codogo@^3.2.15:
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/babel-preset-codogo/-/babel-preset-codogo-3.2.15.tgz#ebac803d6e069c9499b13db1af8022c69b60ec33"
   dependencies:
     babel-plugin-add-react-displayname "^0.0.5"
     babel-plugin-inline-react-svg "^0.5.2"
@@ -1424,7 +1448,7 @@ babel-preset-codogo@^3.2.10, babel-preset-codogo@^3.2.9:
     babel-preset-env "^1.6.1"
     babel-preset-react-app "^3.1.1"
     babel-runtime "^6.26.0"
-    eslint-config-codogo "^3.2.10"
+    eslint-config-codogo "^3.2.15"
 
 babel-preset-env@1.6.1, babel-preset-env@^1.6.1:
   version "1.6.1"
@@ -2067,20 +2091,20 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codogo-scripts@3.2.9:
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/codogo-scripts/-/codogo-scripts-3.2.9.tgz#04072dbdf45cd24c84f1086634af3785d13a98bf"
+codogo-scripts@3.2.15:
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/codogo-scripts/-/codogo-scripts-3.2.15.tgz#6b3a5d3b8368546f3e30904b1957e8599fb0cba7"
   dependencies:
     "@babel/core" "^7.0.0-beta.38"
     "@babel/preset-env" "^7.0.0-beta.38"
     await-to-js "^2.0.1"
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
-    babel-preset-codogo "^3.2.9"
+    babel-preset-codogo "^3.2.15"
     babel-preset-env "^1.6.1"
     clean-webpack-plugin "^0.1.17"
     copy-webpack-plugin "^4.4.2"
-    eslint-config-codogo "^3.2.9"
+    eslint-config-codogo "^3.2.15"
     eslint-loader "^1.9.0"
     extract-text-webpack-plugin "^3.0.2"
     graphql-loader "^1.2.1"
@@ -2223,7 +2247,7 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
-convert-source-map@^1.1.0, convert-source-map@^1.5.0:
+convert-source-map@^1.1.0, convert-source-map@^1.5.0, convert-source-map@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.1.tgz#b8278097b9bc229365de5c62cf5fcaed8b5599e5"
 
@@ -2874,12 +2898,12 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-codogo@^3.2.10, eslint-config-codogo@^3.2.9:
-  version "3.2.10"
-  resolved "https://registry.yarnpkg.com/eslint-config-codogo/-/eslint-config-codogo-3.2.10.tgz#f1111605fc5355cc90203fec83035066ecaad69b"
+eslint-config-codogo@^3.2.15:
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/eslint-config-codogo/-/eslint-config-codogo-3.2.15.tgz#ab07e87bfba7042944bc2210b7ef099615c4425f"
   dependencies:
     babel-eslint "^8.0.1"
-    babel-preset-codogo "^3.2.10"
+    babel-preset-codogo "^3.2.15"
     eslint-config-react-app "^2.0.1"
     eslint-plugin-flowtype "^2.36.0"
     eslint-plugin-import "^2.2.0"
@@ -5337,7 +5361,7 @@ pretty-error@^2.0.2:
     renderkid "^2.0.1"
     utila "~0.4"
 
-private@^0.1.6, private@^0.1.7, private@~0.1.5:
+private@^0.1.6, private@^0.1.7, private@^0.1.8, private@~0.1.5:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
 
@@ -5543,6 +5567,15 @@ react-transition-group@^1.2.0:
 react@16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
+react@16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"

@@ -49,7 +49,7 @@ const MiddleBar = styled(Bar)`
 	top: ${ props =>
 		props.open ? 0 : (props.layerSpacing + props.layerHeight) * -1 }px;
 	${ props =>
-		props.open ? `transform: rotate(-90deg);` : "" } ${ props => `transition:
+		props.open ? "transform: rotate(-90deg);" : "" } ${ props => `transition:
 		top
 		${ 0.12 * 2 * props.transitionDuration }s
 		${ (props.open ? 0.18 : 0.3) * 2 * props.transitionDuration }s

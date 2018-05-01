@@ -12,23 +12,21 @@ import {
 	shadow,
 	sm,
 	xs,
-	transparent,
 } from "codogo-utility-functions";
 
 // --------------------------------------------------
 
 const NavContainer = styled.div`
-	${ props => props.fixed &&
+	${ props =>
+		props.fixed &&
 		`
 			position: fixed;
 			left: 0;
 			right: 0;
 			top: 0;
-		`
-	};
+		` };
 	${ props => bpEither("height", props.height) };
-	${ props => props.clear && `height: 0 !important;` }
-	z-index: 10;
+	${ props => props.clear && "height: 0 !important;" } z-index: 10;
 `;
 
 const NavWrapper = styled.nav`
@@ -111,16 +109,16 @@ export default class Nav extends React.Component {
 	CloseMenu = () => {
 		this.setState({
 			open: false,
-		})
+		});
 	};
 
 	ToggleMenu = () => {
 		this.setState({
 			open: !this.state.open,
-		})
+		});
 	};
 
-	render() { 
+	render() {
 		const {
 			backgroundColor,
 			children,
@@ -134,16 +132,10 @@ export default class Nav extends React.Component {
 			links,
 		} = this.props;
 
-		const {
-			open,
-		} = this.state;
+		const { open, } = this.state;
 
 		return (
-			<NavContainer 
-				height = { height }
-				fixed = { fixed }
-				clear = { clear }
-			>
+			<NavContainer height = { height } fixed = { fixed } clear = { clear }>
 				<NavWrapper
 					height = { height }
 					backgroundColor = { backgroundColor }
@@ -159,7 +151,7 @@ export default class Nav extends React.Component {
 							close = { this.CloseMenu }
 							links = { links }
 						>
-							{ children }
+							{children}
 						</Links>
 
 						<MobileContent>
@@ -168,9 +160,7 @@ export default class Nav extends React.Component {
 								open = { open }
 							/>
 
-							<BurgerWrapper
-								onClick = { this.ToggleMenu }
-							>
+							<BurgerWrapper onClick = { this.ToggleMenu }>
 								<Burger
 									highlightColor = { highlightColor }
 									backgroundColor = { backgroundColor }
@@ -179,12 +169,11 @@ export default class Nav extends React.Component {
 							</BurgerWrapper>
 						</MobileContent>
 
-						{
-							logo && 
+						{logo && (
 							<Logo font = { font } height = { height }>
-								{ logo }
+								{logo}
 							</Logo>
-						}
+						)}
 					</NavInner>
 				</NavWrapper>
 			</NavContainer>

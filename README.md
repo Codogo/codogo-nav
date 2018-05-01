@@ -5,63 +5,81 @@
 Import component
 
 ```
-import { Nav, } from 'codogo-nav';
+    import { Nav, } from "codogo-nav";
 ```
 
-Use like this:
+A simple example:
 
 ```
     <Nav
-        logo = { <Logo src = "/img/igpf-logo.png" /> }
-        font = "Helvetica"
-        textTransform = { { "xs": "capitalize", "other": "capitalize", } }
-        backgroundColor = { { "xs": vars.colors.gray, "other": vars.colors.gray, } }
-        color = { { "xs": vars.colors.primary, "other": vars.colors.primary, } }
-        shadow
-    >
-        {
-            nav.map(
-                (route, i) => (
-                    <MenuLink
-                        key = { route.title }
-                        to = { route.link || route.path }
-                        activeClassName = "active"
-                        onClick = { props.close }
-                    >
-                        { route.title }
-                    </MenuLink>
-                )
-            )
-        }
-    </Nav>
+        logo = { <Logo src = { akkrooLogo } /> }
+        links = { [
+            {
+                as: "gatsby-link",
+                to: "/",
+                content: "Home",
+            },
+            {
+                as: "a",
+                to: "/form-stage-1/",
+                content: "Stage 1",
+            },
+            {
+                as: "router-link",
+                to: "/form-stage-2/",
+                content: "Stage 2",
+            },
+        ] }
+    />
 ```
+
+## Links
+
+`codogo-nav` links support the following components, selected via the "as" property via the following strings:
+
+- `<a/>` - "a"
+- "gatsby-link" - "gatsby-link"
+- `<Link/>` from "react-router-dom" - "link"
+- `<NavLink/>` from "react-router-dom" - "nav-link"
+- `<div/>` - "div"
 
 ## Props
 
 The follow props are used, defaults shown below:
 
 ```
-Nav.defaultProps = {
+const theme = {
     padding: {
-        xs: "15px",
-        other: "20px",
+        //
+        xs: "0.75em",
+        other: "1.5em",
     },
     color: {
+        // Font color
         xs: "#fff",
-        other: "#fff",
+        other: "#333",
+    },
+    highlightColor: {
+        // Hover on links, burger menu
+        xs: "#ddd",
+        other: "#888",
     },
     backgroundColor: {
         xs: "#333",
-        other: "#333",
+        other: "#fff",
     },
     height: {
         xs: "50px",
         other: "70px",
     },
     font: "sans-serif",
+    fontSize: {
+        xs: "0.8em",
+        other: "1.1em",
+    },
     textTransform: {
-        xs: "uppercase",
-        other: "uppercase",
+        xs: "none",
+        other: "none",
     },
     topOffset: {
         xs: "50px",
@@ -71,5 +89,16 @@ Nav.defaultProps = {
         xs: "20px",
         other: "30px",
     },
+    clear: false,
+    fixed: false,
+    shadow: false,
 };
+```
+
+
+## More complex examples
+
+```
+
+
 ```

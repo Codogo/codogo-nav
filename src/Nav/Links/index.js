@@ -1,13 +1,9 @@
 import React from "react";
 import styled, { css, } from "styled-components";
 
-import Link from "./Link";
+import LinkWrapper from "./LinkWrapper";
 
-import {
-	bp,
-	shadow,
-	xs,
-} from "codogo-utility-functions";
+import { bp, shadow, xs, } from "codogo-utility-functions";
 
 // --------------------------------------------------
 
@@ -48,8 +44,8 @@ const Links = props => (
 	>
 		{props.links.map((navlink, i) => {
 			return (
-				<Link
-					key = { navlink.to } 
+				<LinkWrapper
+					key = { navlink.to }
 					i = { i }
 					content = { navlink.content }
 					as = { navlink.as }

@@ -1,13 +1,16 @@
 const theme = {
-	padding: { // 
+	padding: {
+		//
 		xs: "0.75em",
 		other: "1.5em",
 	},
-	color: { // Font color
+	color: {
+		// Font color
 		xs: "#fff",
 		other: "#333",
 	},
-	highlightColor: { // Hover on links, burger menu
+	highlightColor: {
+		// Hover on links, burger menu
 		xs: "#ddd",
 		other: "#888",
 	},

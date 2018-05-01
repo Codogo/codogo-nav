@@ -1,13 +1,7 @@
 import React from "react";
 import styled, { css, } from "styled-components";
-import slugify from "slugify";
 
-import {
-	bp,
-	shadow,
-	transparent,
-	xs,
-} from "codogo-utility-functions";
+import { bp, shadow, xs, } from "codogo-utility-functions";
 
 import DropdownLink from "./DropdownLink";
 
@@ -22,7 +16,7 @@ const dropdownStyle = [
 		opacity: 1;
 		height: auto;
 		overflow: hidden;
-		transition: opacity .5s linear, max-height .5s linear;
+		transition: opacity 0.5s linear, max-height 0.5s linear;
 	`,
 	css`
 		background: white;
@@ -30,8 +24,8 @@ const dropdownStyle = [
 		flex-direction: column;
 		position: absolute;
 
-		${ props => props.clear && `border-radius: 3px` };
-		
+		${ props => props.clear && "border-radius: 3px" };
+
 		${ shadow(2) };
 		${ props => props.height && `top: ${ props.height.other }` };
 	`,
@@ -50,20 +44,16 @@ const DropdownLinks = props => (
 		height = { props.theme.height }
 		clear = { props.theme.clear }
 	>
-		{ 
-			props.dropdown.map(
-				(dropdownLink, i) => (
-					<DropdownLink 
-						key = { dropdownLink.to }
-						as = { dropdownLink.as }
-						content = { dropdownLink.content }
-						to = { dropdownLink.to }
-						close = { props.close }
-						theme = { props.theme }
-					/>
-				)
-			)
-		}
+		{props.dropdown.map((dropdownLink) => (
+			<DropdownLink
+				key = { dropdownLink.to }
+				as = { dropdownLink.as }
+				content = { dropdownLink.content }
+				to = { dropdownLink.to }
+				close = { props.close }
+				theme = { props.theme }
+			/>
+		))}
 	</Dropdown>
 );
 

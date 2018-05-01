@@ -1,12 +1,9 @@
 import React, { Component, } from "react";
 import styled, { css, } from "styled-components";
+import { bp, xs, } from "codogo-utility-functions";
+import { Link as _RouterLink, NavLink as _RouterNavLink, } from "react-router-dom";
 
-import {
-	bp,
-	shadow,
-	transparent,
-	xs,
-} from "codogo-utility-functions";
+import _GatsbyLink from "gatsby-link";
 
 // --------------------------------------------------
 
@@ -34,14 +31,15 @@ const LinkStyles = [
 		padding: 0.5em ${ props => props.padding.other };
 
 		justify-content: left;
-		${ props => props.clear && `justify-content: center;` };
+		${ props => props.clear && "justify-content: center;" };
 
 		${ props => props.underlineColor && "height: 100%" };
 
 		&.active {
 			color: black;
 			padding-top: ${ props => props.underlineColor && "3px" };
-			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			border-bottom: ${ props =>
+		props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
 
 		&:hover {
@@ -49,7 +47,8 @@ const LinkStyles = [
 			text-decoration: underline;
 			padding-top: ${ props => props.underlineColor && "3px" };
 			text-decoration: ${ props => !props.underlineColor && "underline" };
-			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			border-bottom: ${ props =>
+		props.underlineColor && `3px solid ${ props.underlineColor }` };
 		}
 	`,
 ];
@@ -59,22 +58,30 @@ const StyledLink = styled.a`
 	${ bp.sm.min`${ LinkStyles[1] }` };
 `;
 
+const GatsbyLink = StyledLink.withComponent(_GatsbyLink);
+const RouterLink = StyledLink.withComponent(_RouterLink);
+const RouterNavLink = StyledLink.withComponent(_RouterNavLink);
+const DivLink = StyledLink.withComponent("div");
+
+const LinkOptions = {
+	"a": StyledLink,
+	"gatsby-link": GatsbyLink,
+	"link": RouterLink,
+	"nav-link": RouterNavLink,
+	"div": DivLink,
+};
+
 // --------------------------------------------------
 
 class DropdownLink extends Component {
 	render() {
-		const {
-			as,
-			to,
-			close,
-			theme,
-		} = this.props;
+		const { to, close, theme, } = this.props;
 
-		const Link = StyledLink.withComponent( as || "a" );
+		var VariousLink = LinkOptions[this.props.as];
 
 		return (
-			<Link 
-				to = { to } 
+			<VariousLink
+				to = { to }
 				href = { to }
 				onClick = { close }
 				underlineColor = { theme.underlineColor }
@@ -82,9 +89,9 @@ class DropdownLink extends Component {
 				color = { theme.color }
 				clear = { theme.clear }
 			>
-				{ this.props.content }
-			</Link>
-		)
+				{this.props.content}
+			</VariousLink>
+		);
 	}
 }
 
