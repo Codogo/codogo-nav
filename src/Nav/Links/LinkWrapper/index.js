@@ -28,7 +28,6 @@ const linkWrapperStyle = [
 		}
 	`,
 	css`
-		letter-spacing: 0.1em;
 		height: 100%;
 		display: flex;
 		justify-content: center;
@@ -41,6 +40,7 @@ const LinkContainer = styled.div`
 
 	${ props => bpEither("text-transform", props.textTransform) };
 	${ props => bpEither("font-size", props.fontSize) };
+	${ props => bpEither("letter-spacing", props.letterSpacing) };
 	${ props => bpEither("color", props.color) };
 
 	${ xs`${ linkWrapperStyle[0] }` };
@@ -80,6 +80,7 @@ class LinkWrapper extends Component {
 				textTransform = { theme.textTransform }
 				font = { theme.font }
 				fontSize = { theme.fontSize }
+				letterSpacing = { theme.letterSpacing }
 			>
 				<Link
 					as = { as }

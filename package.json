@@ -1,7 +1,7 @@
 {
   "name": "codogo-nav",
   "description": "Default navigation bar that hopefully actually works",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "Max Clayton Clowes <maxcc@me.com>",
   "main": "lib/index.js",
   "babel": {

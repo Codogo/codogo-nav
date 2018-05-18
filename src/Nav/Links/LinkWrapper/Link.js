@@ -35,14 +35,14 @@ const linkStyle = [
 
 		&.active {
 			color: ${ props => props.highlightColor.other };
-			margin-top: ${ props => props.underlineColor && "3px" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			border-top: 3px solid transparent;
 		}
 
 		&:hover {
-			margin-top: ${ props => props.underlineColor && "3px" };
 			text-decoration: ${ props => !props.underlineColor && "underline" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			border-top: 3px solid transparent;
 		}
 	`,
 ];

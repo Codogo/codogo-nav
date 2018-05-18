@@ -27,6 +27,10 @@ const theme = {
 		xs: "0.8em",
 		other: "1.1em",
 	},
+	letterSpacing: {
+		xs: "0",
+		other: "0",
+	},
 	textTransform: {
 		xs: "none",
 		other: "none",
