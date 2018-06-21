@@ -35,6 +35,9 @@
     "codogo"
   ],
   "license": "MIT",
+  "pre-commit": [
+    "build"
+  ],
   "scripts": {
     "build": "mcclowes-scripts build",
     "watch": "mcclowes-scripts watch",
