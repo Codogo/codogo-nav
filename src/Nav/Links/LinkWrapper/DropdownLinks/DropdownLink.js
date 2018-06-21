@@ -4,6 +4,7 @@ import { bp, xs, } from "codogo-utility-functions";
 import { Link as _RouterLink, NavLink as _RouterNavLink, } from "react-router-dom";
 
 import _GatsbyLink from "gatsby-link";
+import PropTypes from "prop-types";
 
 // --------------------------------------------------
 
@@ -75,7 +76,7 @@ const LinkOptions = {
 
 class DropdownLink extends Component {
 	render() {
-		const { to, close, theme, } = this.props;
+		const { to, close, theme, content, } = this.props;
 
 		var VariousLink = LinkOptions[this.props.as];
 
@@ -89,10 +90,18 @@ class DropdownLink extends Component {
 				color = { theme.color }
 				clear = { theme.clear }
 			>
-				{this.props.content}
+				{ content }
 			</VariousLink>
 		);
 	}
 }
+
+DropdownLink.propTypes = {
+	as: PropTypes.object,
+	close: PropTypes.any,
+	content: PropTypes.object,
+	theme: PropTypes.object,
+	to: PropTypes.any,
+};
 
 export default DropdownLink;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Links from "./Links";
 import Burger from "./Burger";
+import PropTypes from "prop-types";
 import theme from "./theme";
 
 import {
@@ -95,7 +96,7 @@ const Logo = styled.div`
 
 // -------------------------------
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
 	static defaultProps = theme;
 
 	constructor(props) {
@@ -180,3 +181,18 @@ export default class Nav extends React.Component {
 		);
 	}
 }
+
+Nav.propTypes = {
+	backgroundColor: PropTypes.any,
+	children: PropTypes.any,
+	clear: PropTypes.any,
+	fixed: PropTypes.any,
+	font: PropTypes.any,
+	height: PropTypes.any,
+	highlightColor: PropTypes.any,
+	links: PropTypes.any,
+	logo: PropTypes.any,
+	shadow: PropTypes.any,
+};
+
+export default Nav;

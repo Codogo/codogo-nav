@@ -9,6 +9,7 @@ import {
 } from "codogo-utility-functions";
 
 import _GatsbyLink from "gatsby-link";
+import PropTypes from "prop-types";
 
 
 // --------------------------------------------------
@@ -107,5 +108,15 @@ class Link extends Component {
 		);
 	}
 }
+
+Link.propTypes = {
+	as: PropTypes.object,
+	border: PropTypes.any,
+	children: PropTypes.any,
+	close: PropTypes.any,
+	links: PropTypes.object,
+	theme: PropTypes.object,
+	to: PropTypes.object,
+};
 
 export default Link;

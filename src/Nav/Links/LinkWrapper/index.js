@@ -4,6 +4,7 @@ import { bp, bpEither, xs, transparent, } from "codogo-utility-functions";
 
 import DropdownLinks from "./DropdownLinks";
 import Link from "./Link";
+import PropTypes from "prop-types";
 
 // --------------------------------------------------
 
@@ -71,7 +72,7 @@ const DropdownInput = styled.input`
 
 class LinkWrapper extends Component {
 	render() {
-		const { as, to, close, dropdown, theme, i, border, } = this.props;
+		const { as, to, close, dropdown, theme, i, border, content, } = this.props;
 
 		return (
 			<LinkContainer
@@ -90,7 +91,7 @@ class LinkWrapper extends Component {
 					theme = { theme }
 					border = { border }
 				>
-					{this.props.content}
+					{ content }
 				</Link>
 
 				{dropdown && (
@@ -117,5 +118,16 @@ class LinkWrapper extends Component {
 		);
 	}
 }
+
+LinkWrapper.propTypes = {
+	as: PropTypes.any,
+	border: PropTypes.any,
+	close: PropTypes.any,
+	content: PropTypes.any,
+	dropdown: PropTypes.any,
+	i: PropTypes.any,
+	theme: PropTypes.any,
+	to: PropTypes.any,
+};
 
 export default LinkWrapper;

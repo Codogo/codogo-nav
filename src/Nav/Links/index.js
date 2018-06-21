@@ -1,9 +1,9 @@
-import React from "react";
+import { bp, shadow, xs, } from "codogo-utility-functions";
 import styled, { css, } from "styled-components";
 
 import LinkWrapper from "./LinkWrapper";
-
-import { bp, shadow, xs, } from "codogo-utility-functions";
+import PropTypes from "prop-types";
+import React from "react";
 
 // --------------------------------------------------
 
@@ -59,5 +59,13 @@ const Links = props => (
 		})}
 	</LinksWrapper>
 );
+
+
+Links.propTypes = {
+	close: PropTypes.any,
+	links: PropTypes.object,
+	open: PropTypes.any,
+	theme: PropTypes.object,
+};
 
 export default Links;

@@ -1,9 +1,9 @@
-import React from "react";
+import { bp, shadow, xs, } from "codogo-utility-functions";
 import styled, { css, } from "styled-components";
 
-import { bp, shadow, xs, } from "codogo-utility-functions";
-
 import DropdownLink from "./DropdownLink";
+import PropTypes from "prop-types";
+import React from "react";
 
 // --------------------------------------------------
 
@@ -56,5 +56,12 @@ const DropdownLinks = props => (
 		))}
 	</Dropdown>
 );
+
+DropdownLinks.propTypes = {
+	close: PropTypes.object,
+	dropdown: PropTypes.any,
+	open: PropTypes.any,
+	theme: PropTypes.object,
+};
 
 export default DropdownLinks;
