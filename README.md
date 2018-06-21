@@ -2,8 +2,7 @@
 
 
 
-![npm](https://img.shields.io/npm/v/npm.svg)
-![npm](https://img.shields.io/npm/dw/localeval.svg)
+[![npm version](https://badge.fury.io/js/codogo-nav.svg)](https://badge.fury.io/js/codogo-nav)
 
 A navigation bar component for React, than (hopefully) just works.
 
