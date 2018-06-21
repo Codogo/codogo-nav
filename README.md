@@ -1,5 +1,12 @@
 # codogo-nav
 
+
+![npm](https://img.shields.io/npm/dw/localeval.svg)
+
+A navigation bar component for React, than (hopefully) just works.
+
+---
+
 ## Example usage
 
 Import component
