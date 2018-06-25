@@ -121,13 +121,13 @@ class LinkWrapper extends Component {
 
 LinkWrapper.propTypes = {
 	as: PropTypes.any,
-	border: PropTypes.any,
-	close: PropTypes.any,
-	content: PropTypes.any,
-	dropdown: PropTypes.any,
+	border: PropTypes.bool,
+	close: PropTypes.func,
+	content: PropTypes.string,
+	dropdown: PropTypes.array,
 	i: PropTypes.any,
 	theme: PropTypes.any,
-	to: PropTypes.any,
+	to: PropTypes.string,
 };
 
 export default LinkWrapper;

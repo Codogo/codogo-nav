@@ -17,6 +17,12 @@ import PropTypes from "prop-types";
 const linkStyle = [
 	css`
 		font-size: 1em;
+
+		&.active {
+			color: ${ props => props.highlightColor.other };
+			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
+			border-top: ${ props => props.underlineColor && "3px solid transparent;" };
+		}
 	`,
 	css`
 		display: flex;
@@ -37,13 +43,13 @@ const linkStyle = [
 		&.active {
 			color: ${ props => props.highlightColor.other };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
-			border-top: 3px solid transparent;
+			border-top: ${ props => props.underlineColor && "3px solid transparent;" };
 		}
 
 		&:hover {
 			text-decoration: ${ props => !props.underlineColor && "underline" };
 			border-bottom: ${ props => props.underlineColor && `3px solid ${ props.underlineColor }` };
-			border-top: 3px solid transparent;
+			border-top: ${ props => props.underlineColor && "3px solid transparent;" };
 		}
 	`,
 ];
@@ -110,13 +116,13 @@ class Link extends Component {
 }
 
 Link.propTypes = {
-	as: PropTypes.object,
-	border: PropTypes.any,
+	as: PropTypes.any,
+	border: PropTypes.bool,
 	children: PropTypes.any,
-	close: PropTypes.any,
-	links: PropTypes.object,
+	close: PropTypes.func,
+	links: PropTypes.any,
 	theme: PropTypes.object,
-	to: PropTypes.object,
+	to: PropTypes.string,
 };
 
 export default Link;

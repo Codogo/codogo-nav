@@ -21,6 +21,8 @@ const LinkStyles = [
 			color: ${ props => props.color.xs };
 			text-decoration: underline;
 		}
+
+		${ props => props.clear && `` };
 	`,
 	css`
 		align-items: center;
@@ -97,11 +99,11 @@ class DropdownLink extends Component {
 }
 
 DropdownLink.propTypes = {
-	as: PropTypes.object,
-	close: PropTypes.any,
-	content: PropTypes.object,
+	as: PropTypes.any,
+	close: PropTypes.func,
+	content: PropTypes.string,
 	theme: PropTypes.object,
-	to: PropTypes.any,
+	to: PropTypes.string,
 };
 
 export default DropdownLink;

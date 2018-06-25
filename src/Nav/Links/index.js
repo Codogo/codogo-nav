@@ -62,9 +62,9 @@ const Links = props => (
 
 
 Links.propTypes = {
-	close: PropTypes.any,
-	links: PropTypes.object,
-	open: PropTypes.any,
+	close: PropTypes.func,
+	links: PropTypes.any,
+	open: PropTypes.bool,
 	theme: PropTypes.object,
 };
 

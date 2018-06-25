@@ -58,9 +58,9 @@ const DropdownLinks = props => (
 );
 
 DropdownLinks.propTypes = {
-	close: PropTypes.object,
-	dropdown: PropTypes.any,
-	open: PropTypes.any,
+	close: PropTypes.func,
+	dropdown: PropTypes.array,
+	open: PropTypes.bool,
 	theme: PropTypes.object,
 };
 

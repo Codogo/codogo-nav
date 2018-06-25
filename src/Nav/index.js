@@ -183,16 +183,16 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-	backgroundColor: PropTypes.any,
+	backgroundColor: PropTypes.object,
 	children: PropTypes.any,
-	clear: PropTypes.any,
-	fixed: PropTypes.any,
-	font: PropTypes.any,
-	height: PropTypes.any,
-	highlightColor: PropTypes.any,
-	links: PropTypes.any,
-	logo: PropTypes.any,
-	shadow: PropTypes.any,
+	clear: PropTypes.bool,
+	fixed: PropTypes.bool,
+	font: PropTypes.string,
+	height: PropTypes.object,
+	highlightColor: PropTypes.object,
+	links: PropTypes.array,
+	logo: PropTypes.element,
+	shadow: PropTypes.bool,
 };
 
 export default Nav;
