@@ -30,10 +30,10 @@ const LinkStyles = [
 		display: flex;
 		flex-direction: row;
 		height: 100%;
+		justify-content: left;
 		letter-spacing: 0.1em;
 		padding: 0.5em ${ props => props.padding.other };
-
-		justify-content: left;
+		
 		${ props => props.clear && "justify-content: center;" };
 
 		${ props => props.underlineColor && "height: 100%" };
